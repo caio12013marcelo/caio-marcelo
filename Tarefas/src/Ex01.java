@@ -12,7 +12,7 @@ public class Ex01 {
         System.out.println("Infore quanto ganha por hora: ");
         double pag= input.nextDouble();
 
-        double total= (horas*pag)*4;
+        double total= horas*pag*4;
         System.out.printf("Funcionário: "+mat+" o total a receber é "+total);
 
         input.close();
