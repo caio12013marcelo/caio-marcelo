@@ -20,13 +20,30 @@ public class Ex06 {
                 {447, 5, 699900},
                 {126, 3, 259900}
         };
-        int somaValor=0,menorValor=matriz[0][0];
+        int somaValor=0;
+        int menorPreco=matriz[0][0];
+        int menorTamanho=matriz[0][0];
+        int maiorTamanho=matriz[0][0];
+        int quantMenorQuartos=matriz[0][0];
+        int quanMaiorQuartos=matriz[0][0];
         for (int i=0;i<matriz.length;i++){
             for (int j=0;j<matriz.length;j++){
                 if(j == 2){
                     somaValor= somaValor+matriz[i][j];
+                    if(matriz[i][j]<menorPreco){
+                        menorPreco=matriz[i][j];
+                    }
                 }
-                if
+
+                if(j==1){
+                    if(menorTamanho<matriz.length){
+                        menorTamanho=matriz.length;
+
+                    }
+                    if(maiorTamanho>matriz.length){
+                        maiorTamanho=matriz.length;
+                    }
+                }
             }
         }
         int media= somaValor/matriz.length;
