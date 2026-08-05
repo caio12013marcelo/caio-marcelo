@@ -20,14 +20,16 @@ public class Ex06 {
                 {447, 5, 699900},
                 {126, 3, 259900}
         };
-        int somaValor=0;
+        int somaValor=0,menorValor=matriz[0][0];
         for (int i=0;i<matriz.length;i++){
             for (int j=0;j<matriz.length;j++){
                 if(j == 2){
                     somaValor= somaValor+matriz[i][j];
                 }
+                if
             }
         }
-        System.out.println(somaValor);
+        int media= somaValor/matriz.length;
+        System.out.println(media);
     }
 }
