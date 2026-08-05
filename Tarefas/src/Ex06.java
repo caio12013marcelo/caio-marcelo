@@ -36,17 +36,21 @@ public class Ex06 {
                 }
 
                 if(j==1){
-                    if(menorTamanho<matriz.length){
-                        menorTamanho=matriz.length;
+                    if(quanMaiorQuartos<matriz.length){
+                        maiorTamanho=matriz[i][0];
+                        quanMaiorQuartos=matriz[i][j];
 
                     }
-                    if(maiorTamanho>matriz.length){
-                        maiorTamanho=matriz.length;
+                    if(quantMenorQuartos>matriz.length){
+                        menorTamanho=matriz[i][0];
+                        quantMenorQuartos=matriz[i][j];
                     }
                 }
             }
         }
         int media= somaValor/matriz.length;
+        int dife= maiorTamanho-menorTamanho;
         System.out.println(media);
+        System.out.println(dife);
     }
 }
