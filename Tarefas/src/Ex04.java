@@ -25,6 +25,7 @@ public class Ex04 {
                     altMenor = alt;
                     userMenor = user;
                 }
+               
             }
         }
         double mediaAltura= somaAtleta/contador;
