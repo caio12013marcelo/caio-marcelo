@@ -35,7 +35,7 @@ public class Ex06 {
                 }
                 tamanho300=matriz[i][2];
 
-                if(quanMaiorQuartos<matriz[i][1]){
+                if(matriz[i][1]>quanMaiorQuartos){
                     maiorTamanho=matriz[i][0];
                     quanMaiorQuartos=matriz[i][1];
 
