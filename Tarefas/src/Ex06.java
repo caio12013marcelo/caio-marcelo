@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Ex06 {
@@ -26,14 +27,13 @@ public class Ex06 {
         int maiorTamanho=matriz[0][0];
         int quantMenorQuartos=matriz[0][0];
         int quanMaiorQuartos=matriz[0][0];
+        int tamanho300=0,soma300=0,cont300=0;
         for (int i=0;i<matriz.length;i++){
             for (int j=0;j<matriz.length;j++){
                 if(j == 2){
                     somaValor= somaValor+matriz[i][j];
-                    if(matriz[i][j]<menorPreco){
-                        menorPreco=matriz[i][j];
-                    }
                 }
+                tamanho300=matriz[i][2];
 
                 if(j==1){
                     if(quanMaiorQuartos<matriz.length){
@@ -45,12 +45,22 @@ public class Ex06 {
                         menorTamanho=matriz[i][0];
                         quantMenorQuartos=matriz[i][j];
                     }
+                    if(matriz[i][1]<menorTamanho){
+                        menorPreco=matriz[i][2];
+                    }
+                }
+                if (tamanho300>=300.000){
+                    soma300= soma300+matriz[i][0];
+                    cont300++;
                 }
             }
         }
         int media= somaValor/matriz.length;
         int dife= maiorTamanho-menorTamanho;
-        System.out.println(media);
-        System.out.println(dife);
+        tamanho300= soma300/cont300;
+        System.out.println("Média dos preços: "+media);
+        System.out.println("Preço da menor casa: "+ menorPreco);
+        System.out.println("Diferença de tamanho: "+dife);
+        System.out.println("Média do tamanho das casas que custam mais de R$ 300.000: "+ tamanho300);
     }
 }
