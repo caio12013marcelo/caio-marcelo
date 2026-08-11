@@ -35,19 +35,17 @@ public class Ex06 {
                 }
                 tamanho300=matriz[i][2];
 
-                if(j==1){
-                    if(quanMaiorQuartos<matriz.length){
-                        maiorTamanho=matriz[i][0];
-                        quanMaiorQuartos=matriz[i][j];
+                if(quanMaiorQuartos<matriz[i][1]){
+                    maiorTamanho=matriz[i][0];
+                    quanMaiorQuartos=matriz[i][1];
 
-                    }
-                    if(quantMenorQuartos>matriz.length){
-                        menorTamanho=matriz[i][0];
-                        quantMenorQuartos=matriz[i][j];
-                    }
-                    if(matriz[i][1]<menorTamanho){
-                        menorPreco=matriz[i][2];
-                    }
+                }
+                if(quantMenorQuartos>matriz[i][1]){
+                    menorTamanho=matriz[i][0];
+                    quantMenorQuartos=matriz[i][j];
+                }
+                if(matriz[i][1]<menorTamanho){
+                    menorPreco=matriz[i][2];
                 }
                 if (tamanho300>=300.000){
                     soma300= soma300+matriz[i][0];
@@ -60,6 +58,7 @@ public class Ex06 {
         tamanho300= soma300/cont300;
         System.out.println("Média dos preços: "+media);
         System.out.println("Preço da menor casa: "+ menorPreco);
+        System.out.println(menorTamanho+ " || "+ maiorTamanho);
         System.out.println("Diferença de tamanho: "+dife);
         System.out.println("Média do tamanho das casas que custam mais de R$ 300.000: "+ tamanho300);
     }
