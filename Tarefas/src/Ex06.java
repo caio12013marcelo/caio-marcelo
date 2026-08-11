@@ -1,15 +1,8 @@
-import java.text.DecimalFormat;
-import java.util.Scanner;
-
 public class Ex06 {
     public static void main(String[] args) {
-
-        int[][] matriz = {
-                {210, 3, 399900},
-                {160, 3, 329900},
-                {240, 3, 369000},
-                {141, 2, 232000},
-                {300, 4, 539900},
+        // {tamanho, quartos, preço}
+        double[][] casas = {
+                {0, 4, 539900},   // tamanho não informado
                 {198, 4, 299900},
                 {153, 3, 314900},
                 {142, 3, 199000},
@@ -21,45 +14,83 @@ public class Ex06 {
                 {447, 5, 699900},
                 {126, 3, 259900}
         };
-        int somaValor=0;
-        int menorPreco=matriz[0][0];
-        int menorTamanho=matriz[0][0];
-        int maiorTamanho=matriz[0][0];
-        int quantMenorQuartos=matriz[0][0];
-        int quanMaiorQuartos=matriz[0][0];
-        int tamanho300=0,soma300=0,cont300=0;
-        for (int i=0;i<matriz.length;i++){
-            for (int j=0;j<matriz.length;j++){
-                if(j == 2){
-                    somaValor= somaValor+matriz[i][j];
-                }
-                tamanho300=matriz[i][2];
 
-                if(matriz[i][1]>quanMaiorQuartos){
-                    maiorTamanho=matriz[i][0];
-                    quanMaiorQuartos=matriz[i][1];
+        // a) Média dos preços
+        double somaPrecos = 0;
 
-                }
-                if(quantMenorQuartos>matriz[i][1]){
-                    menorTamanho=matriz[i][0];
-                    quantMenorQuartos=matriz[i][j];
-                }
-                if(matriz[i][1]<menorTamanho){
-                    menorPreco=matriz[i][2];
-                }
-                if (tamanho300>=300.000){
-                    soma300= soma300+matriz[i][0];
-                    cont300++;
+        for (double[] casa : casas) {
+            somaPrecos += casa[2];
+        }
+
+        double mediaPrecos = somaPrecos / casas.length;
+
+        System.out.println("a) Média dos preços: R$ " + mediaPrecos);
+
+
+        // b) Preço da menor casa
+        double menorTamanho = Double.MAX_VALUE;
+        double precoMenorCasa = 0;
+
+        for (double[] casa : casas) {
+            if (casa[0] > 0 && casa[0] < menorTamanho) {
+                menorTamanho = casa[0];
+                precoMenorCasa = casa[2];
+            }
+        }
+
+        System.out.println("b) Preço da menor casa: R$ " + precoMenorCasa);
+
+
+        // c) Diferença de tamanho entre a casa com mais quartos
+        // e a menor casa entre as que possuem o menor número de quartos
+
+        int maiorNumeroQuartos = 0;
+        int menorNumeroQuartos = Integer.MAX_VALUE;
+
+        for (double[] casa : casas) {
+            if (casa[1] > maiorNumeroQuartos) {
+                maiorNumeroQuartos = (int) casa[1];
+            }
+
+            if (casa[1] < menorNumeroQuartos) {
+                menorNumeroQuartos = (int) casa[1];
+            }
+        }
+
+        double tamanhoMaiorQuartos = 0;
+        double menorTamanhoMenorQuartos = Double.MAX_VALUE;
+
+        for (double[] casa : casas) {
+            if ((int) casa[1] == maiorNumeroQuartos) {
+                tamanhoMaiorQuartos = casa[0];
+            }
+
+            if ((int) casa[1] == menorNumeroQuartos && casa[0] > 0) {
+                if (casa[0] < menorTamanhoMenorQuartos) {
+                    menorTamanhoMenorQuartos = casa[0];
                 }
             }
         }
-        int media= somaValor/matriz.length;
-        int dife= maiorTamanho-menorTamanho;
-        tamanho300= soma300/cont300;
-        System.out.println("Média dos preços: "+media);
-        System.out.println("Preço da menor casa: "+ menorPreco);
-        System.out.println(menorTamanho+ " || "+ maiorTamanho);
-        System.out.println("Diferença de tamanho: "+dife);
-        System.out.println("Média do tamanho das casas que custam mais de R$ 300.000: "+ tamanho300);
+
+        double diferenca = tamanhoMaiorQuartos - menorTamanhoMenorQuartos;
+
+        System.out.println("c) Diferença de tamanho: " + diferenca + " m²");
+
+
+        // d) Média do tamanho das casas que custam mais de R$ 300.000
+        double somaTamanhos = 0;
+        int quantidade = 0;
+
+        for (double[] casa : casas) {
+            if (casa[2] > 300000 && casa[0] > 0) {
+                somaTamanhos += casa[0];
+                quantidade++;
+            }
+        }
+
+        double mediaTamanhos = somaTamanhos / quantidade;
+
+        System.out.println("d) Média dos tamanhos acima de R$ 300.000: "
+                + mediaTamanhos + " m²");
     }
 }

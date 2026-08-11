@@ -5,7 +5,7 @@ public class Ex04 {
         Scanner input = new Scanner(System.in);
 
         int user=1;
-        double altMaior=0,somaAtleta=0,altMenor=10;
+        double altMaior=0,somaAtleta=0,altMenor=0;
         int userMaior=0,userMenor=0;
         int contador=0;
 
@@ -18,6 +18,9 @@ public class Ex04 {
                 System.out.println("Informe a altura dele: ");
                 double alt = input.nextDouble();
                 somaAtleta= somaAtleta+alt;
+                if(contador==1){
+                    altMenor=alt;
+                }
                 if (alt > altMaior) {
                     altMaior = alt;
                     userMaior = user;
@@ -25,7 +28,7 @@ public class Ex04 {
                     altMenor = alt;
                     userMenor = user;
                 }
-               
+
             }
         }
         double mediaAltura= somaAtleta/contador;
