@@ -23,11 +23,13 @@ public class SistemaAlunos {
     }
 
     public Aluno retornarAlunoMatricula(String matricula) {
+
         for (Aluno a : alunos) {
             if (matricula.equals(a.getMatricula())) {
                 return a;
             }
         }
-        return null;
+
+       throw new IllegalArgumentException("Matricula não encontrada");
     }
 }
